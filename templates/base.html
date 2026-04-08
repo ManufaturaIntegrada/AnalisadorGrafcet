@@ -1,0 +1,56 @@
+<!-- FERRAMENTA EDUCACIONAL ORIENTATIVA PARA ALUNOS DE GRADUAÇÃO
+NA DISCIPLINA DE MANUFATURA INTEGRADA DA UTFPR
+    Copyright (C) 2025
+Alunos: Jhulia Andrade de Souza Nogueira e Henrique Marques Dias Chaves
+Orientador: Prof. Dr. Sidney Carlos Gasoto
+Banca: Prof. Dr. Luiz Carlos de Abreu Rodrigues e Prof. Dr. Márcio Alves Sodré de Souza
+Palavras-chave: manufatura integrada; programação de CLPs; interface de usuário; ferramenta educacional.
+Data da defesa: 27/11/2025 -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Analisador SFC/GRAFCET{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="{{ url_for('index') }}" class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">Analisador SFC/GRAFCET</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="container">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            <span class="alert-icon">
+                                {% if category == 'error' %}⚠️{% else %}ℹ️{% endif %}
+                            </span>
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Manufatura Integrada - Projeto FMS © 2025</p>
+        </div>
+    </footer>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

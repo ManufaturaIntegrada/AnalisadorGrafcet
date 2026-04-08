@@ -1,0 +1,90 @@
+<!-- FERRAMENTA EDUCACIONAL ORIENTATIVA PARA ALUNOS DE GRADUAÇÃO
+NA DISCIPLINA DE MANUFATURA INTEGRADA DA UTFPR
+    Copyright (C) 2025
+Alunos: Jhulia Andrade de Souza Nogueira e Henrique Marques Dias Chaves
+Orientador: Prof. Dr. Sidney Carlos Gasoto
+Banca: Prof. Dr. Luiz Carlos de Abreu Rodrigues e Prof. Dr. Márcio Alves Sodré de Souza
+Palavras-chave: manufatura integrada; programação de CLPs; interface de usuário; ferramenta educacional.
+Data da defesa: 27/11/2025 -->
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Análise - Analisador SFC/GRAFCET</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" onclick="goIndex()" class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">Analisador SFC/GRAFCET</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <!-- ALERTAS -->
+        <div class="container" id="alerts"></div>
+
+        <div class="container">
+
+            <div class="result-header">
+                <h1>📊 Resultado da Análise do GRAFCET</h1>
+                <p class="result-filename">
+                    Arquivo analisado: <strong id="filename"></strong>
+                </p>
+            </div>
+
+            <!-- RESUMO DINÂMICO -->
+            <div id="summary"></div>
+
+            <!-- RESULTADOS -->
+            <div class="results-grid" id="results"></div>
+
+            <!-- STATS -->
+            <div id="stats"></div>
+
+            <!-- ERRO -->
+            <div id="errorBox"></div>
+
+            <div class="actions" style="margin-top: 2rem;">
+                <button onclick="goIndex()" class="btn btn-secondary">
+                    ⬅️ Enviar outro arquivo
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Manufatura Integrada - Projeto FMS © 2025</p>
+        </div>
+    </footer>
+
+    <script src="./js/scripts.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const data = JSON.parse(localStorage.getItem("resultado"));
+
+            if (!data) {
+                alert("Nenhum resultado encontrado");
+                window.location.href = "index.html";
+                return;
+            }
+
+            preencherResultado(data);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Orientativo - Analisador GRAFCET</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">Analisador SFC/GRAFCET</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="container" id="alerts"></div>
+
+        <div class="container">
+            <div class="hero">
+                <h1 class="hero-title">Manufatura Integrada</h1>
+                <p class="hero-subtitle">
+                    Guia interativo para o projeto final de FMS
+                </p>
+                <p class="hero-description">
+                    Antes de começar o projeto e partir para a programação do CLP, é essencial planejar bem o funcionamento do seu sistema FMS. 
+                    Leia as informações abaixo para entender como criar um <strong>GRAFCET/SFC</strong> eficiente e utilizar a ferramenta de análise automática.
+                    <br><br>
+                    <strong>É importante ter o software Codesys instalado</strong>. Com ele, 
+                    você pode criar e testar seu <strong>GRAFCET</strong> na sua própria máquina, sem precisar esperar a aula de laboratório.
+                </p>
+            </div>
+
+            <div class="grid-container">
+
+                <!-- ========================= -->
+                <!-- PASSOS -->
+                <!-- ========================= -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>📋 Passos para um bom planejamento</h2>
+                    </div>
+                    <div class="card-body">
+                        <ol class="steps-list">
+
+                            <li>
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <strong>Entenda o processo</strong>
+                                    <span>O GRAFCET é um ótimo aliado no planejamento e desenvolvimento do seu projeto FMS. Antes de programar, entenda o fluxo de operações e defina os objetivos principais.</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <strong>Desenhe o diagrama do sistema</strong>
+                                    <span>Para começar, baixe o template base do GRAFCET desenvolvido no Codesys. Esse arquivo serve como ponto de partida para o seu projeto.</span>
+
+                                    <a href="template_grafcet_FMS.project" class="btn btn-secondary" download="template_grafcet_FMS.project">
+                                        ⬇️ Baixar Template GRAFCET
+                                    </a>
+
+                                    <a href="template_grafcet_FMS_2.project" class="btn btn-secondary" download="template_grafcet_FMS_2.project">
+                                        ⬇️ Baixar Template 2 GRAFCET
+                                    </a>
+
+                                    <a href="template_grafcet_FMS_3.project" class="btn btn-secondary" download="template_grafcet_FMS_3.project">
+                                        ⬇️ Baixar Template 3 GRAFCET
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <strong>Liste suas variáveis</strong>
+                                    <span>Identifique todas as “entradas” (ex: sensores, botões) e “saídas” (ex: motores, pistões, esteiras) do sistema.</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <strong>Defina as etapas</strong>
+                                    <span>Transforme cada ação principal do processo (ex: “Ligar esteira”, “Avançar pistão”) em uma etapa no GRAFCET.</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <strong>Estabeleça as transições</strong>
+                                    <span>Para cada etapa, pergunte-se: “O que precisa acontecer para que esta ação termine e a próxima comece?”</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="step-number">6</div>
+                                <div class="step-content">
+                                    <strong>Revise o fluxo</strong>
+                                    <span>Verifique se a sequência faz sentido. Onde processos acontecem em paralelo? Onde há decisões?</span>
+                                </div>
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- VALIDAÇÃO -->
+                <!-- ========================= -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>✅ Valide seu GRAFCET</h2>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="info-box">
+                            <span>🤖</span>
+                            <div>
+                                <strong>O que o analisador faz:</strong> Ele lê o arquivo exportado do <strong>Codesys</strong> no formato <em>PLCopenXML</em> e verifica:
+                                <ul style="margin-top: 0.5rem; margin-left: 1.2rem;">
+                                    <li>✅ Se existe exatamente uma etapa inicial no GRAFCET;</li>
+                                    <li>✅ Se todas as transições possuem condição definida;</li>
+                                    <li>✅ E se o arquivo XML está completo e bem estruturado.</li>
+                                </ul>
+                                <p style="margin-top: 0.5rem;">Com um GRAFCET bem estruturado e planejado fica mais fácil fazer a programação do CLP em Ladder.</p>
+                                <p style="margin-top: 0.5rem;">⚠️ <strong>Esse analisador apenas verifica a estrutura do seu modelo, ele não dá respostas do projeto.</strong></p>
+
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <span>💻</span>
+                            <div>
+                                <strong>Dica:</strong> Caso não tenha o Codesys <a href="https://store.codesys.com/en/codesys.html" target="_blank">baixe aqui</a>.
+                            </div>
+                        </div>
+
+                        <p class="upload-description">
+                            Quando o modelo estiver pronto, exporte do <strong>Codesys</strong> em formato <strong>.xml</strong> e envie aqui para análise automática:
+                        </p>
+
+                        <!-- FORM SEM FLASK -->
+                        <form class="upload-form" id="uploadForm">
+
+                            <div class="file-input-wrapper">
+                                <input type="file" id="file" accept=".xml" required>
+
+                                <label for="file" class="file-input-label">
+                                    <span class="file-icon">📁</span>
+                                    <span class="file-text">Escolher arquivo XML</span>
+                                </label>
+
+                                <span class="file-name" id="fileName">
+                                    Nenhum arquivo selecionado
+                                </span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <span id="btnIcon">🔍</span>
+                                <span id="btnText">Analisar meu GRAFCET</span>
+                            </button>
+
+                            <div class="loading-overlay" id="loadingOverlay">
+                                <div class="loading-spinner"></div>
+                                <p class="loading-text">Analisando seu GRAFCET...</p>
+                                <p class="loading-subtext">Isso pode levar alguns segundos</p>
+                            </div>
+
+                        </form>
+
+                        <div class="info-box" style="margin-top: 1rem;">
+                            <span>💡</span>
+                            <div>
+                                <strong>Importante:</strong> Use apenas arquivos exportados no formato <strong>PLCopenXML</strong> do <strong>Codesys</strong>.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Manufatura Integrada - Projeto FMS © 2025</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT PRINCIPAL -->
+    <script src="./js/scripts.js"></script>
+    <script>
+    const fileInput = document.getElementById('file');
+    const fileNameDisplay = document.getElementById('fileName');
+    const uploadForm = document.getElementById('uploadForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    
+    fileInput.addEventListener('change', function(e) {
+        const fileName = e.target.files[0]?.name || 'Nenhum arquivo selecionado';
+        fileNameDisplay.textContent = fileName;
+        
+        if (e.target.files[0]) {
+            fileNameDisplay.style.color = 'var(--success-color)';
+            fileNameDisplay.style.fontWeight = '600';
+        } else {
+            fileNameDisplay.style.color = 'var(--text-secondary)';
+            fileNameDisplay.style.fontWeight = 'normal';
+        }
+    });
+    
+    uploadForm.addEventListener('submit', function(e) {
+        submitBtn.disabled = true;
+        btnIcon.textContent = '⏳';
+        btnText.textContent = 'Processando...';
+        submitBtn.style.opacity = '0.7';
+        submitBtn.style.cursor = 'not-allowed';
+        
+        loadingOverlay.style.display = 'flex';
+    });
+</script>
+
+</body>
+</html>

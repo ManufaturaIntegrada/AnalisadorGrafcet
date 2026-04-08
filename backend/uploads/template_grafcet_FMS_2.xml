@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0200">
+  <fileHeader companyName="" productName="CODESYS" productVersion="CODESYS V3.5 SP22" creationDateTime="2026-03-28T03:31:47.0276947" />
+  <contentHeader name="template_grafcet_FMS.project" modificationDateTime="2026-03-28T03:28:33.2760948">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+    <addData>
+      <data name="http://www.3s-software.com/plcopenxml/projectinformation" handleUnknown="implementation">
+        <ProjectInformation />
+      </data>
+    </addData>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous />
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="Device">
+        <resource name="Application">
+          <task name="MainTask" interval="PT0.02S" priority="1">
+            <pouInstance name="PLC_PRG" typeName="">
+              <documentation>
+                <xhtml xmlns="http://www.w3.org/1999/xhtml" />
+              </documentation>
+            </pouInstance>
+            <addData>
+              <data name="http://www.3s-software.com/plcopenxml/tasksettings" handleUnknown="implementation">
+                <TaskSettings KindOfTask="Cyclic" Interval="t#20ms" IntervalUnit="ms" WithinSPSTimeSlicing="true">
+                  <Watchdog Enabled="false" TimeUnit="ms" Sensitivity="1" />
+                </TaskSettings>
+              </data>
+              <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                <ObjectId>3af2326f-ed28-4205-b537-77a5b560dc1d</ObjectId>
+              </data>
+            </addData>
+          </task>
+          <addData>
+            <data name="http://www.3s-software.com/plcopenxml/pou" handleUnknown="implementation">
+              <pou name="PLC_PRG" pouType="program">
+                <interface>
+                  <localVars>
+                    <variable name="Start_Processo">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Inicia o processo</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="Para_Processo">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Para o processo</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="Etapa1_Ativa">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Variáveis de estado</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="Etapa2_Ativa">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Etapa3_Ativa">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Transicao_1_2">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Condição de transição</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="Transicao_2_3">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Transicao_3_Init">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Sensor_Y_Home">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Sensores e/ou atuadores</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="Sensor_Z_Home">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Sensor_Garra">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Motor1">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Motor2">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Valvula1">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                    <variable name="Timer_11">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                      <documentation>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml"> Timers simulados</xhtml>
+                      </documentation>
+                    </variable>
+                    <variable name="Timer_25">
+                      <type>
+                        <BOOL />
+                      </type>
+                      <initialValue>
+                        <simpleValue value="FALSE" />
+                      </initialValue>
+                    </variable>
+                  </localVars>
+                  <addData>
+                    <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
+                      <Attributes>
+                        <Attribute Name="do_checks_for_implicit_code" Value="" />
+                      </Attributes>
+                    </data>
+                  </addData>
+                  <documentation>
+                    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+|=========================================================================|
+| TEMPLATE ORIENTATIVO PARA A CONSTRUÇÃO DO GRAFCET/SFC DO PROJETO FINAL  |
+|=========================================================================|
+| Instruções:                                                             |
+| 1. Cada etapa representa um estado do seu processo no FMS;              |
+| 2. Adicione novas etapas e transições conforme o seu projeto;           |
+| 3. Nomeie as etapas e variáveis de forma descritiva;                    |
+| 4. Se preferir comente o que cada etapa faz (isso ajuda muito!!)        |
+| 5. Ao finalizar:                                                        |
+|    - Vá em "Projeto" -&gt; "Exportar" -&gt; "Exporta PLCOpenXML"              |
+|    - Escolha apenas o POU principal (PLC_PRG)                           |
+|    - Salve como &lt;nome_do_projeto&gt;.xml                                   |
+| 6. Faça o upload no site para validação                                 |
+|=========================================================================| 
+</xhtml>
+                  </documentation>
+                </interface>
+                <actions>
+                  <action name="A_Etapa1">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">// STEP 1
+
+Etapa1_Ativa := TRUE;
+
+// Ação - movimentar eixo Y para a posição Home
+// Insira lógica de acionamento se necessário
+
+IF Sensor_Y_Home THEN
+	Transicao_1_2 := TRUE;
+END_IF</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>00b8c912-f63b-449c-a43a-097b4ce518da</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                  <action name="A_Etapa2">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">// Step 2
+
+Etapa2_Ativa := TRUE;
+
+// Ação - Deslocar Eixo Z e confirmar a posição
+// Inserir condição de avanço
+
+IF Sensor_Z_Home THEN
+	Transicao_2_3 := TRUE;
+END_IF</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>a8e8f570-b235-4496-a40a-90ffe4671f46</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                  <action name="A_Init">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">// INICIALIZAÇÃO
+
+Etapa1_Ativa := FALSE;
+Etapa2_Ativa := FALSE;
+Etapa3_Ativa := FALSE;
+Transicao_1_2 := FALSE;
+Transicao_2_3 := FALSE;
+Transicao_3_Init := FALSE;</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>d69367d2-a119-45b1-b176-1d9450534da2</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                  <action name="A_Etapa3">
+                    <body>
+                      <ST>
+                        <xhtml xmlns="http://www.w3.org/1999/xhtml">// Step 3
+
+Etapa3_Ativa := TRUE;
+
+// Ação: Simular a operação do armazém, ex: garra para pegar o objeto
+
+IF Timer_11 THEN
+	Transicao_3_Init := TRUE;
+END_IF
+</xhtml>
+                      </ST>
+                    </body>
+                    <addData>
+                      <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                        <ObjectId>c07fedee-38c2-4b27-9736-876b9f6717db</ObjectId>
+                      </data>
+                    </addData>
+                  </action>
+                </actions>
+                <body>
+                  <SFC>
+                    <step localId="0" initialStep="true" name="Init">
+                      <position x="0" y="0" />
+                      <connectionPointIn />
+                      <connectionPointOut formalParameter="sfc" />
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Init</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="6844a48e-46c2-4cc8-a185-a478f3b99cc0">TRUE</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="700a583f-b4d4-43e4-8c14-629c7cd3bec8">A_Init</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </step>
+                    <inVariable localId="1">
+                      <position x="0" y="0" />
+                      <connectionPointOut />
+                      <expression>Start_Processo</expression>
+                    </inVariable>
+                    <transition localId="2">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="0" formalParameter="sfc" />
+                      </connectionPointIn>
+                      <condition>
+                        <connectionPointIn>
+                          <connection refLocalId="1" />
+                        </connectionPointIn>
+                      </condition>
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Start_Processo</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="8294df19-5962-4dee-a874-1051dabb0e3e">0</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </transition>
+                    <step localId="3" name="Etapa1">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="2" />
+                      </connectionPointIn>
+                      <connectionPointOut formalParameter="sfc" />
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Etapa1</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="6844a48e-46c2-4cc8-a185-a478f3b99cc0">FALSE</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="a6b08bd8-b696-47e3-9cbf-7408b61c9ff8">A_Etapa1</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </step>
+                    <inVariable localId="4">
+                      <position x="0" y="0" />
+                      <connectionPointOut />
+                      <expression>Transicao_1_2</expression>
+                    </inVariable>
+                    <transition localId="5">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="3" formalParameter="sfc" />
+                      </connectionPointIn>
+                      <condition>
+                        <connectionPointIn>
+                          <connection refLocalId="4" />
+                        </connectionPointIn>
+                      </condition>
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Transicao_1_2</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="8294df19-5962-4dee-a874-1051dabb0e3e">0</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </transition>
+                    <step localId="6" name="Etapa2">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="5" />
+                      </connectionPointIn>
+                      <connectionPointOut formalParameter="sfc" />
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Etapa2</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="6844a48e-46c2-4cc8-a185-a478f3b99cc0">FALSE</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="700a583f-b4d4-43e4-8c14-629c7cd3bec8">A_Etapa2</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </step>
+                    <inVariable localId="7">
+                      <position x="0" y="0" />
+                      <connectionPointOut />
+                      <expression>Transicao_2_3</expression>
+                    </inVariable>
+                    <transition localId="8">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="6" formalParameter="sfc" />
+                      </connectionPointIn>
+                      <condition>
+                        <connectionPointIn>
+                          <connection refLocalId="7" />
+                        </connectionPointIn>
+                      </condition>
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Transicao_2_3</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="8294df19-5962-4dee-a874-1051dabb0e3e">0</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </transition>
+                    <step localId="9" name="Etapa3">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="8" />
+                      </connectionPointIn>
+                      <connectionPointOut formalParameter="sfc" />
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Etapa3</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="6844a48e-46c2-4cc8-a185-a478f3b99cc0">FALSE</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="700a583f-b4d4-43e4-8c14-629c7cd3bec8">A_Etapa3</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </step>
+                    <inVariable localId="10">
+                      <position x="0" y="0" />
+                      <connectionPointOut />
+                      <expression>TRUE</expression>
+                    </inVariable>
+                    <transition localId="11">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="9" formalParameter="sfc" />
+                      </connectionPointIn>
+                      <condition>
+                        <connectionPointIn>
+                          <connection refLocalId="10" />
+                        </connectionPointIn>
+                      </condition>
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">TRUE</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                            <attribute guid="bc882c11-1e91-4dd8-a6b8-2075724ed18b">0</attribute>
+                            <attribute guid="62e1754b-7629-4e63-9cec-10ae0c536f1f">FALSE</attribute>
+                            <attribute guid="8294df19-5962-4dee-a874-1051dabb0e3e">0</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </transition>
+                    <jumpStep localId="12" targetName="Init">
+                      <position x="0" y="0" />
+                      <connectionPointIn>
+                        <connection refLocalId="11" />
+                      </connectionPointIn>
+                      <addData>
+                        <data name="http://www.3s-software.com/plcopenxml/sfc/element" handleUnknown="implementation">
+                          <attributes xmlns="">
+                            <attribute guid="38391c6d-6d4a-42f8-8ee7-9f45e5adafa8">Init</attribute>
+                            <attribute guid="01580b27-6378-448b-8ecb-0e4b795b58d6">FALSE</attribute>
+                          </attributes>
+                        </data>
+                      </addData>
+                    </jumpStep>
+                  </SFC>
+                </body>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/sfcsettings" handleUnknown="implementation">
+                    <SFCSettings>
+                      <LibTitle>IecSfc</LibTitle>
+                      <LibCompany>System</LibCompany>
+                      <LibVersion>4.4.0.0</LibVersion>
+                      <LibNamespace>IecSfc</LibNamespace>
+                      <CalcActiveTransOnly>false</CalcActiveTransOnly>
+                      <UseDefaults>false</UseDefaults>
+                      <Flags>
+                        <EnableLimit Declare="true" Use="false" />
+                        <Init Declare="true" Use="false" />
+                        <Reset Declare="true" Use="false" />
+                        <QuitError Declare="true" Use="false" />
+                        <Pause Declare="true" Use="false" />
+                        <Error Declare="true" Use="false" />
+                        <Trans Declare="true" Use="false" />
+                        <ErrorStep Declare="true" Use="false" />
+                        <ErrorPOU Declare="true" Use="false" />
+                        <CurrentStep Declare="true" Use="false" />
+                        <Tip Declare="true" Use="false" />
+                        <TipMode Declare="true" Use="false" />
+                        <MaxFlags Declare="true" Use="false" />
+                        <SFCErrorAnalyzation Declare="true" Use="false" />
+                        <SFCErrorAnalyzationTable Declare="true" Use="false" />
+                        <CurrentSteps Declare="true" Use="false" />
+                        <MetaSteps Declare="true" Use="false" />
+                      </Flags>
+                    </SFCSettings>
+                  </data>
+                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                    <ObjectId>bf5ba201-bd73-4c29-a4a9-be9e1407f3b0</ObjectId>
+                  </data>
+                </addData>
+              </pou>
+            </data>
+            <data name="http://www.3s-software.com/plcopenxml/libraries" handleUnknown="implementation">
+              <Libraries>
+                <Library Name="#IoStandard" Namespace="IoStandard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="true" DefaultResolution="IoStandard, 3.5.17.0 (System)" />
+                <Library Name="#3SLicense" Namespace="_3S_LICENSE" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="3SLicense, 0.0.0.0 (CODESYS)" ResolverGuid="97c3b452-d9fa-4ac2-9d0c-3d420aa6d95b" />
+                <Library Name="#CAA Device Diagnosis" Namespace="DED" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="CAA Device Diagnosis, 3.5.21.0 (CAA Technical Workgroup)" />
+                <Library Name="#Standard" Namespace="Standard" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="false" LinkAllContent="false" DefaultResolution="Standard, * (System)" />
+                <Library Name="#IecSfc" Namespace="IecSfc" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="IecSfc, 4.4.0.0 (System)" />
+                <Library Name="#Analyzation" Namespace="Analyzation" HideWhenReferencedAsDependency="false" PublishSymbolsInContainer="false" SystemLibrary="true" LinkAllContent="false" DefaultResolution="Analyzation, 4.1.0.0 (System)" />
+                <PlaceholderRedirections>
+                  <PlaceholderRedirection Placeholder="Standard" Redirection="Standard, 3.5.18.0 (System)" />
+                  <PlaceholderRedirection Placeholder="IoStandard" Redirection="IoStandard, 3.5.22.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CmpIoMgr Implementation" Redirection="CmpIoMgr Implementation, 3.5.17.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CmpLog" Redirection="CmpLog, 3.5.21.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CmpApp" Redirection="CmpApp, 3.5.21.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CAA Device Diagnosis" Redirection="CAA Device Diagnosis, 3.5.22.0 (CAA Technical Workgroup)" />
+                  <PlaceholderRedirection Placeholder="CommFB" Redirection="CommFB, 3.5.21.0 (CODESYS)" />
+                  <PlaceholderRedirection Placeholder="CmpAsyncMgr" Redirection="CmpAsyncMgr, 3.5.21.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CmpIoConfig Implementation" Redirection="CmpIoConfig Implementation, 3.5.22.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CAA Types" Redirection="CAA Types Extern, 3.5.17.0 (CAA Technical Workgroup)" />
+                  <PlaceholderRedirection Placeholder="SysCpuHandling" Redirection="SysCpuHandling, 3.5.17.0 (System)" />
+                  <PlaceholderRedirection Placeholder="SysMem" Redirection="SysMem, 3.5.17.0 (System)" />
+                  <PlaceholderRedirection Placeholder="Component Manager" Redirection="Component Manager, 3.5.21.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CmpEventMgr" Redirection="CmpEventMgr, 3.5.17.0 (System)" />
+                  <PlaceholderRedirection Placeholder="CmpEventMgr Implementation" Redirection="CmpEventMgr Implementation, 3.5.17.0 (System)" />
+                </PlaceholderRedirections>
+                <addData>
+                  <data name="http://www.3s-software.com/plcopenxml/objectid" handleUnknown="discard">
+                    <ObjectId>736df777-f2f3-4c11-8407-8300a12c2f6c</ObjectId>
+                  </data>
+                </addData>
+              </Libraries>
+  
