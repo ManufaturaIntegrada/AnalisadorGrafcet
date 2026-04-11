@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.216:5000"
+const API_URL = "https://cycling-sections-decreased-holidays.trycloudflare.com/"
 
 // =======================
 // NAVEGAÇÃO
