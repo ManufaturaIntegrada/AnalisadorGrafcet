@@ -1,4 +1,4 @@
-const API_URL = "https://cycling-sections-decreased-holidays.trycloudflare.com"
+const API_URL = ""
 
 // =======================
 // NAVEGAÇÃO
