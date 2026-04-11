@@ -40,7 +40,7 @@ echo ================================
 echo Atualizando script.js...
 echo ================================
 
-powershell -Command "(Get-Content js/script.js) -replace 'URL_AQUI', '%URL%' | Set-Content js/script.js"
+powershell -Command "(Get-Content js/scripts.js) -replace 'URL_AQUI', '%URL%' | Set-Content js/scripts.js"
 
 echo ================================
 echo Enviando para GitHub...
