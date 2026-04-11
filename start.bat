@@ -17,27 +17,34 @@ echo ================================
 echo Iniciando Cloudflare Tunnel...
 echo ================================
 
-start cmd /c "cloudflared tunnel --url http://localhost:5000 > tunnel.txt"
+start cmd /c "cloudflared tunnel --url http://localhost:5000 > tunnel.txt 2>&1"
 
 timeout /t 10 > nul
 
 echo ================================
-echo Extraindo URL...
+echo Aguardando URL do tunnel...
 echo ================================
 
 set URL=
 
-for /f "tokens=*" %%i in ('findstr /R "https://.*trycloudflare.com" tunnel.txt') do (
+:loop
+timeout /t 2 > nul
+
+for /f "tokens=*" %%i in ('findstr "trycloudflare.com" tunnel.txt') do (
     set URL=%%i
 )
 
-REM limpa texto extra (pega só a URL)
+if "%URL%"=="" (
+    echo Aguardando URL...
+    goto loop
+)
+
+REM limpa texto extra
 for /f "tokens=2 delims= " %%a in ("%URL%") do set URL=%%a
 
 echo URL encontrada: %URL%
-
 echo ================================
-echo Atualizando script.js...
+echo Atualizando scripts.js...
 echo ================================
 
 powershell -Command "(Get-Content js/scripts.js) -replace 'https://.*trycloudflare.com', '%URL%' | Set-Content js/scripts.js"
