@@ -593,4 +593,35 @@ Data da defesa: 27/11/2025 */
     font-size: 0.95rem;
     text-align: center;
   }
-  
+  .template-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.custom-select {
+    position: relative;
+}
+
+.custom-select select {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 0.95rem;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* seta custom */
+.custom-select::after {
+    content: "▼";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 0.7rem;
+}
