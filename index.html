@@ -63,17 +63,21 @@
                                     <strong>Desenhe o diagrama do sistema</strong>
                                     <span>Para começar, baixe os templates base para o seu projeto de Manufatura. Esses arquivos servem como ponto de partida para o seu projeto.</span>
 
-                                    <a href="template_grafcet_FMS.project" class="btn btn-secondary" download="template_grafcet_FMS.project">
-                                        ⬇️ Baixar Template GRAFCET
-                                    </a>
+                                    <div style="margin-top: 1rem;">
 
-                                    <a href="template_grafcet_FMS_2.project" class="btn btn-secondary" download="template_grafcet_FMS_2.project">
-                                        ⬇️ Baixar Template 2 GRAFCET
-                                    </a>
+                                        <label for="templateSelect"><strong>Escolha um template:</strong></label>
 
-                                    <a href="template_grafcet_FMS_3.project" class="btn btn-secondary" download="template_grafcet_FMS_3.project">
-                                        ⬇️ Baixar Template 3 GRAFCET
-                                    </a>
+                                        <select id="templateSelect" class="btn btn-secondary" style="margin-top: 0.5rem; width: 100%;">
+                                            <option value="template_grafcet_FMS.project">Template GRAFCET 1</option>
+                                            <option value="template_grafcet_FMS_2.project">Template GRAFCET 2</option>
+                                            <option value="template_grafcet_FMS_3.project">Template GRAFCET 3</option>
+                                        </select>
+
+                                        <button class="btn btn-primary" style="margin-top: 0.5rem; width: 100%;" onclick="baixarTemplate()">
+                                            ⬇️ Baixar Template Selecionado
+                                        </button>
+
+                                    </div>
                                 </div>
                             </li>
 
