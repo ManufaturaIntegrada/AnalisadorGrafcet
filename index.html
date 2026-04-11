@@ -62,40 +62,22 @@
                                 <div class="step-content">
                                     <strong>Desenhe o diagrama do sistema</strong>
                                     <span>Para começar, baixe os templates base para o seu projeto de Manufatura. Esses arquivos servem como ponto de partida para o seu projeto.</span>
-                                
-                                    <div class="template-grid">
+                                    <div class="template-box">
+                                        <label for="templateSelect">Escolha um template:</label>
 
-                                        <div class="template-card" onclick="selecionarTemplate('template_grafcet_FMS.project')">
-                                            <h4>Template GRAFCET</h4>
-                                            <p>Modelo básico de GRAFCET</p>
+                                        <div class="custom-select">
+                                            <select id="templateSelect">
+                                                <option value="template_grafcet_FMS.project">Template GRAFCET</option>
+                                                <option value="template_grafcet_FMS_2.project">Template LADDER</option>
+                                                <option value="template_grafcet_FMS_3.project">Template Código G (Torno)</option>
+                                                <option value="template_grafcet_FMS_3.project">Template LABView</option>
+                                                <option value="template_grafcet_FMS_3.project">Template Código G (Robô)</option>
+                                            </select>
                                         </div>
-
-                                        <div class="template-card" onclick="selecionarTemplate('template_grafcet_FMS_2.project')">
-                                            <h4>Template LADDER</h4>
-                                            <p>Com ramificações</p>
-                                        </div>
-
-                                        <div class="template-card" onclick="selecionarTemplate('template_grafcet_FMS_3.project')">
-                                            <h4>Template Código G (Torno)</h4>
-                                            <p>Modelo avançado</p>
-                                        </div>
-
-                                        <div class="template-card" onclick="selecionarTemplate('template_grafcet_FMS.project')">
-                                            <h4>Template LABView</h4>
-                                            <p>Modelo básico de GRAFCET</p>
-                                        </div>
-
-                                        <div class="template-card" onclick="selecionarTemplate('template_grafcet_FMS.project')">
-                                            <h4>Template Código G (Robô)</h4>
-                                            <p>Modelo básico de GRAFCET</p>
-                                        </div>
-
                                         <button class="btn btn-primary" style="margin-top: 0.5rem; width: 100%;" onclick="baixarTemplate()">
                                             ⬇️ Baixar Template Selecionado
                                         </button>
-
                                     </div>
-
                                     </div>
                                 </div>
                             </li>

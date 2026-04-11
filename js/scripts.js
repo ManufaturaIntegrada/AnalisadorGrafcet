@@ -12,28 +12,18 @@ function goIndex() {
 // =======================
 let templateSelecionado = "";
 
-function selecionarTemplate(nome) {
-    templateSelecionado = nome;
-
-    document.querySelectorAll(".template-card").forEach(card => {
-        card.classList.remove("active");
-    });
-
-    event.currentTarget.classList.add("active");
-}
-
 function baixarTemplate() {
-    if (!templateSelecionado) {
-        alert("Selecione um template!");
-        return;
-    }
+    const select = document.getElementById("templateSelect");
+    const arquivo = select.value;
 
     const link = document.createElement("a");
-    link.href = templateSelecionado;
-    link.download = templateSelecionado;
-    link.click();
-}
+    link.href = arquivo;
+    link.download = arquivo;
 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
 // =======================
 // RESULTADO
