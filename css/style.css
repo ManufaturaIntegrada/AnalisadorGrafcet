@@ -48,25 +48,7 @@ Data da defesa: 27/11/2025 */
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 0;
     box-shadow: var(--shadow-sm);
-  }
-
-  .custom-select {
-    position: relative;
-
-  }
-
-  .custom-select select {
-    width: 100%;
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: white;
-    font-size: 0.95rem;
-    appearance: none;
-    cursor: pointer;
-
-  }
-  
+  } 
   .logo {
     display: flex;
     align-items: center;

@@ -10,8 +10,6 @@ function goIndex() {
 // =======================
 // Baixar TEMPLATE
 // =======================
-let templateSelecionado = "";
-
 function baixarTemplate() {
     const select = document.getElementById("templateSelect");
     const arquivo = select.value;
