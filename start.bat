@@ -10,7 +10,7 @@ if %errorlevel%==0 (
 ) else (
     echo Iniciando Flask...
     start cmd /k "cd backend && python app.py"
-    timeout /t 4 > nul
+    timeout /t 5 > nul
 )
 
 echo ================================
@@ -19,7 +19,7 @@ echo ================================
 
 start cmd /c "cloudflared tunnel --url http://localhost:5000 > tunnel.txt"
 
-timeout /t 6 > nul
+timeout /t 10 > nul
 
 echo ================================
 echo Extraindo URL...
