@@ -1,4 +1,4 @@
-const API_URL = ""
+const API_URL = "https://depot-comfort-level-incidence.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
