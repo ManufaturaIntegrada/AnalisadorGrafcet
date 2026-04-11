@@ -10,17 +10,28 @@ function goIndex() {
 // =======================
 // Baixar TEMPLATE
 // =======================
+let templateSelecionado = "";
+
+function selecionarTemplate(nome) {
+    templateSelecionado = nome;
+
+    document.querySelectorAll(".template-card").forEach(card => {
+        card.classList.remove("active");
+    });
+
+    event.currentTarget.classList.add("active");
+}
+
 function baixarTemplate() {
-    const select = document.getElementById("templateSelect");
-    const arquivo = select.value;
+    if (!templateSelecionado) {
+        alert("Selecione um template!");
+        return;
+    }
 
     const link = document.createElement("a");
-    link.href = arquivo;
-    link.download = arquivo;
-
-    document.body.appendChild(link);
+    link.href = templateSelecionado;
+    link.download = templateSelecionado;
     link.click();
-    document.body.removeChild(link);
 }
 
 
