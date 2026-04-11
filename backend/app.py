@@ -11,7 +11,7 @@ UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'xml'}
 
 app = Flask(__name__)
-CORS(app, origins=["https://anfugo.github.io"])  # permite acesso do GitHub Pages
+CORS(app, origins=["https://manufaturaintegrada.github.io"])  # permite acesso do GitHub Pages
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB
