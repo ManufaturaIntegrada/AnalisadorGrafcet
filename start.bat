@@ -25,22 +25,16 @@ echo ================================
 echo Aguardando URL do tunnel...
 echo ================================
 
+
 set URL=
 
-:loop
-timeout /t 2 > nul
-
 for /f "tokens=*" %%i in ('findstr "trycloudflare.com" tunnel.txt') do (
+    echo %%i | findstr /R "https://.*trycloudflare.com" > temp.txt
+)
+
+for /f "tokens=*" %%i in (temp.txt) do (
     set URL=%%i
 )
-
-if "%URL%"=="" (
-    echo Aguardando URL...
-    goto loop
-)
-
-REM limpa texto extra
-for /f "tokens=2 delims= " %%a in ("%URL%") do set URL=%%a
 
 echo URL encontrada: %URL%
 echo ================================
