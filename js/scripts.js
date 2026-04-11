@@ -1,4 +1,4 @@
-const API_URL = "https://depot-comfort-level-incidence.trycloudflare.com"
+const API_URL = "https://verbal-managed-commit-pdas.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO

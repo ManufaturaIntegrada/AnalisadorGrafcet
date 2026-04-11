@@ -44,7 +44,7 @@ echo ================================
 echo Atualizando scripts.js...
 echo ================================
 
-powershell -Command "(Get-Content js/scripts.js) -replace 'https://.*trycloudflare.com', '%URL%' | Set-Content js/scripts.js"
+powershell -Command "(Get-Content js/scripts.js) -replace 'const API_URL = \".*\"', 'const API_URL = \"%URL%\"' | Set-Content js/scripts.js"
 
 echo ================================
 echo Enviando para GitHub...
