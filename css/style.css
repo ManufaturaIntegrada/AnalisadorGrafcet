@@ -593,26 +593,3 @@ Data da defesa: 27/11/2025 */
     font-size: 0.95rem;
     text-align: center;
   }
-  .template-grid {
-    display: grid;
-    gap: 0.7rem;
-    margin-top: 1rem;
-}
-
-.template-card {
-    padding: 1rem;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.template-card:hover {
-    border-color: var(--primary-color);
-    background: #f8fafc;
-}
-
-.template-card.active {
-    border: 2px solid var(--primary-color);
-    background: #eef2ff;
-}
