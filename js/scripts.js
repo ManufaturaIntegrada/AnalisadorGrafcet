@@ -8,6 +8,23 @@ function goIndex() {
 }
 
 // =======================
+// Baixar TEMPLATE
+// =======================
+function baixarTemplate() {
+    const select = document.getElementById("templateSelect");
+    const arquivo = select.value;
+
+    const link = document.createElement("a");
+    link.href = arquivo;
+    link.download = arquivo;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+// =======================
 // RESULTADO
 // =======================
 function preencherResultado(data) {
