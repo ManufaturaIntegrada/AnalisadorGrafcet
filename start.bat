@@ -25,15 +25,18 @@ echo ================================
 echo Aguardando URL do tunnel...
 echo ================================
 
-
 set URL=
 
-for /f "tokens=*" %%i in ('findstr "trycloudflare.com" tunnel.txt') do (
-    echo %%i | findstr /R "https://.*trycloudflare.com" > temp.txt
+:loop
+timeout /t 2 > nul
+
+for /f %%i in ('powershell -Command "(Get-Content tunnel.txt | Select-String -Pattern 'https://.*trycloudflare.com').Matches.Value"') do (
+    set URL=%%i
 )
 
-for /f "tokens=*" %%i in (temp.txt) do (
-    set URL=%%i
+if "%URL%"=="" (
+    echo Aguardando URL...
+    goto loop
 )
 
 echo URL encontrada: %URL%
