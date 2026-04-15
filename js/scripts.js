@@ -1,4 +1,4 @@
-const API_URL = "https://charges-travel-saver-corporate.trycloudflare.com"
+const API_URL = "https://ensure-wall-petite-premises.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO

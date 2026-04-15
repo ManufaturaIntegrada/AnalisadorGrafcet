@@ -3,7 +3,7 @@ cd /d %~dp0
 
 echo Verificando porta 5000...
 
-netstat -ano | findstr :5000 > nul
+netstat -ano | findstr :8000 > nul
 
 if %errorlevel%==0 (
     echo Servidor ja esta rodando. Pulando inicializacao do Flask.
