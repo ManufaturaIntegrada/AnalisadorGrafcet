@@ -1,4 +1,4 @@
-const API_URL = "https://arbitration-bottom-blah-behaviour.trycloudflare.com"
+const API_URL = "https://stood-fax-founder-thanksgiving.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
