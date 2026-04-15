@@ -1,4 +1,4 @@
-const API_URL = "https://verbal-managed-commit-pdas.trycloudflare.com"
+const API_URL = "https://charges-travel-saver-corporate.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
