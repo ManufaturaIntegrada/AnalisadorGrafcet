@@ -1,7 +1,7 @@
 @echo off
 cd /d %~dp0
 
-echo Verificando porta 5000...
+echo Verificando porta 8000...
 
 netstat -ano | findstr :8000 > nul
 
@@ -17,7 +17,7 @@ echo ================================
 echo Iniciando Cloudflare Tunnel...
 echo ================================
 
-start cmd /c "cloudflared tunnel --url http://localhost:5000 > tunnel.txt 2>&1"
+start cmd /c "cloudflared tunnel --url http://localhost:8000 > tunnel.txt 2>&1"
 
 timeout /t 10 > nul
 
