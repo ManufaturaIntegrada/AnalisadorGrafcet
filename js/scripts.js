@@ -1,4 +1,4 @@
-const API_URL = "https://lexington-verbal-leaf-anticipated.trycloudflare.com"
+const API_URL = "https://modelling-studied-termination-removal.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
