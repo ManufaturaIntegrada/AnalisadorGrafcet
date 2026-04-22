@@ -1,4 +1,4 @@
-const API_URL = "https://modelling-studied-termination-removal.trycloudflare.com"
+const API_URL = "https://gage-congress-pit-mechanisms.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
