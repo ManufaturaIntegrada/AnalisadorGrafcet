@@ -1,4 +1,4 @@
-const API_URL = "https://efficient-depends-titten-comes.trycloudflare.com"
+const API_URL = "https://lexington-verbal-leaf-anticipated.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
