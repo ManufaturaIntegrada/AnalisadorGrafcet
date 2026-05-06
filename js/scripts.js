@@ -1,4 +1,4 @@
-const API_URL = "https://gage-congress-pit-mechanisms.trycloudflare.com"
+const API_URL = "https://encoding-away-television-photograph.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
