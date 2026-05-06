@@ -6,18 +6,18 @@
 1026 EQ 8, 1060 
 1027 EQ 16, 1070 
 1028 GT 1023 
-
 (Carga) 
-1030 SP7 Define velocidade
+1030 SP7 
 1031 MO321, O 
-1032 MO322, O Move até o Palete
-1033 MO322 ,C Fecha a garra
-1034 SP4      Reduz velocidade 
+1032 MO322, O 
+1033 MO322 ,C 
+1034 SP4 
 1035 TI5 
 1036 MO321, C 
 1037 MO323, C 
-1038 MS324,7, C Aproxima do torno
-1039 MS325,7, C Entra na castanha
-1040 OD 2 
-1041 TI 50 
-1042 GT 1023
+1038 MS324,7, C 
+1039 MS326, 7, C 
+1040 MS325, 7, C 
+1041 OD 2 
+1042 TI 50 
+1043 GT 1023
