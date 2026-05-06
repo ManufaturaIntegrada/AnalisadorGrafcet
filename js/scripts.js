@@ -1,4 +1,4 @@
-const API_URL = "https://encoding-away-television-photograph.trycloudflare.com"
+const API_URL = "https://lodging-hart-attach-healing.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
