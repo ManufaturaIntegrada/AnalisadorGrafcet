@@ -1,4 +1,4 @@
-const API_URL = "https://lodging-hart-attach-healing.trycloudflare.com"
+const API_URL = "https://medicines-discharge-mistakes-desert.trycloudflare.com"
 
 // =======================
 // NAVEGAÇÃO
